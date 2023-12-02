@@ -13,8 +13,17 @@ const logger = new Logger;
 logger.on('messageLogged', (arg) => {
     console.log('Listener called', arg);
 });
+
 let fetchedData = null;
 let counter = 0;
+
+/**
+ * This function is used to get JSON data continiously from a URL at specific period of time
+ * 
+ * Parameter: None
+ * 
+ * Author: Vedant Acharya
+ */
 function fetchDataFromUrl() {
     // Replace 'YOUR_API_URL' with the actual URL you want to fetch data from
     counter += 1;
@@ -46,6 +55,13 @@ fetchDataFromUrl();
 // Fetch data from the URL every 30 seconds
 setInterval(fetchDataFromUrl, 5000);
 
+/**
+ * Creating websocket server 
+ * 
+ * Parameter: -
+ * 
+ * Author: Vedant Acharya
+ */
 wss.on('connection', (ws) => {
     console.log('Client connected');
 
