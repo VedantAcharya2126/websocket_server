@@ -1,0 +1,33 @@
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebSocket Example</title>
+</head>
+<body>
+
+  <p id="user">
+
+  </p>
+    
+  <script>
+
+    const socket = new WebSocket('ws://localhost:3000');
+
+    socket.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      console.log('Received data:', data);
+
+      document.getElementById("user").innerHTML = JSON.stringify(data); 
+    };
+
+    socket.onclose = () => {
+      console.log('Connection closed');
+    };
+    
+  </script>
+</body>
+</html>
+
