@@ -1,26 +1,32 @@
-index.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WebSocket Client</title>
+  <style>
+    div {
+      font-size: 16px;
+      display: block;
+    }
+  </style>
 </head>
 <body>
 
-  <p id="user">
-
-  </p>
+  <p id="user"></p>
+  <div id="data-container"></div>
     
   <script>
-
     const socket = new WebSocket('ws://localhost:3000');
 
     socket.onmessage = (event) => {
       const data = JSON.parse(event.data);
       console.log('Received data:', data);
 
-      document.getElementById("user").innerHTML = JSON.stringify(data); 
+      // Create a new div for each message and append it to the container
+      const newLine = document.createElement('div');
+      newLine.textContent = JSON.stringify(data);
+      document.getElementById('data-container').appendChild(newLine);
     };
 
     socket.onclose = () => {
@@ -30,4 +36,3 @@ index.html
   </script>
 </body>
 </html>
-

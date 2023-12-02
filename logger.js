@@ -13,7 +13,7 @@ let newMessage = {}
 class Logger extends EventEmit {
 	log(message) { 
 		newMessage.data = message;
-		var stream = fs.createWriteStream("//Users/vedantacharya/Desktop/websocket_server/logs/logs.log", { flags: 'a' });
+		var stream = fs.createWriteStream("/Users/vedantacharya/Desktop/websocket_server/logs/logs.log", { flags: 'a' });
 		[...Array(100000)].forEach(function (item, index) {
 			console.log(item)
 			stream.write(JSON.stringify(message) + "\n");
