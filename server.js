@@ -80,7 +80,7 @@ wss.on('connection', (ws) => {
     });
 });
 
-app.get('/', (req, res) => {
+app.get('/connect', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
